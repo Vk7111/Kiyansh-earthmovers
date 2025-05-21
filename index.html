@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KIYANSH EARTHMOVERS</title>
+
+  <script>
+    function logout() {
+      sessionStorage.clear(); // This removes login info
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <style>
+    body,
+    html {
+      height: 100%;
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+        url('https://www.xcmgmachinery.com.au/wp-content/uploads/2022/10/XCMG-XE215LC-Excavator-Sale-Hire-Newcastle-Brisbane-Perth-SunshineCoast-3.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .company-name {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding: 0;
+      text-shadow: 2px 2px 8px #222;
+    }
+
+    h1,
+    h2 {
+      color: #fff;
+      text-align: center;
+      margin: 0 0 10px 0;
+      padding: 0;
+      text-shadow: 1px 1px 6px #222;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin: 24px auto;
+      max-width: 520px;
+      box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+      border: 1px solid #e3e8ee;
+    }
+
+    .main-balance {
+      text-align: center;
+      margin-top: 5px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e7e34;
+      letter-spacing: 1px;
+    }
+
+    .row {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      flex: 0 0 130px;
+      text-align: right;
+      font-weight: 600;
+      color: #2d3a4a;
+      font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      flex: 1;
+      max-width: 320px;
+      padding: 10px 12px;
+      border: 1px solid #cfd8dc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f9fafb;
+      color: #2d3a4a;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #5b9df9;
+      outline: none;
+      background: #fff;
+    }
+
+    #description {
+      resize: vertical;
+      min-height: 48px;
+      max-height: 120px;
+      line-height: 1.5em;
+    }
+
+    .styled-select {
+      width: 100%;
+      max-width: 320px;
+      padding: 10px 12px;
+      border: 1px solid #cfd8dc;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #f9fafb;
+      color: #2d3a4a;
+      transition: border-color 0.2s;
+      appearance: none;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .filter-select {
+      width: 180px;
+      max-width: 20%;
+      display: inline-block;
+      padding: 4px 4px;
+      /* Reduced padding */
+      font-size: 0.98rem;
+      /* Slightly smaller font */
+      height: 22px;
+      /* Set a fixed, smaller height */
+      line-height: 1;
+    }
+
+    .styled-select:focus {
+      border-color: #5b9df9;
+      background: #fff;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 18px;
+    }
+
+    .buttons button {
+      padding: 10px 36px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #5b9df9 0%, #4fd1c5 100%);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .buttons button:hover:not(:disabled) {
+      background: linear-gradient(90deg, #4fd1c5 0%, #5b9df9 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    button:disabled {
+      background: #e2e8f0;
+      color: #a0aec0;
+      cursor: not-allowed;
+    }
+
+    button:focus {
+      outline: 2px solid #5b9df9;
+      outline-offset: 2px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .flatpickr-day.flatpickr-sunday {
+      color: #f11b1b !important;
+      background: #ffffff !important;
+      border-radius: 50% !important;
+    }
+
+    table {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      margin-left: auto;
+      margin-right: auto;
+      table-layout: auto !important;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 28px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+    }
+
+    #history-table-glass {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 14px;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-size: 1.04rem;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+      /* Add a visible border for the whole table */
+      border: 2px solid #b0b8c9;
+      /* Ensures border follows the rounded corners */
+      overflow: hidden;
+    }
+
+    #history-table-glass th,
+    #history-table-glass td {
+      text-align: center;
+      padding: 10px 6px;
+      border: 1px solid #b0b8c9;
+      /* Slightly darker border */
+      background: #fff;
+    }
+
+    #history-table-glass th {
+      background: #232b43;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: 1px;
+    }
+
+    #history-table-glass .history-title {
+      background: #232b43;
+      color: #fff;
+      font-size: 1.3em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 14px 14px 0 0;
+    }
+
+    #history-table-glass .history-filters {
+      background: #232b43;
+      color: #fff;
+      padding: 0;
+    }
+
+    #history-table-glass .history-filters div {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      height: 38px;
+      min-height: 38px;
+      padding: 0;
+    }
+
+    #history-table-glass tbody tr:hover td {
+      background: #e3e8ee;
+      color: #232b43;
+    }
+
+    #history-table-glass .summary-row {
+      background: #232b43 !important;
+      font-weight: bold;
+      font-size: 1.08rem;
+      color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      #history-table-glass {
+        font-size: 0.85rem;
+        min-width: 700px;
+      }
+    }
+
+    #main-balance-display {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #1e7e34;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    #header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 18px 32px 0 32px;
+    }
+
+    #userInfo {
+      margin-right: 18px;
+      font-weight: 600;
+      color: #fff;
+      font-size: 1rem;
+      text-shadow: 1px 1px 4px #222;
+    }
+
+    #today-btn {
+      margin-left: 8px;
+      padding: 7px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #4fd1c5 0%, #5b9df9 100%);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 1px 4px rgba(44, 62, 80, 0.10);
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #today-btn:hover {
+      background: linear-gradient(90deg, #5b9df9 0%, #4fd1c5 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+
+    #header button {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #00b894 0%, #0984e3 100%);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #header button:hover {
+      background: linear-gradient(90deg, #ff5858 0%, #f857a6 100%);
+    }
+
+    @media (max-width: 700px) {
+      table {
+        font-size: 0.85rem;
+        overflow-x: auto;
+        display: block;
+        padding: 16px 4vw;
+      }
+    }
+  </style>
+  <!-- Add Flatpickr CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+
+<body>
+  <script>
+    // Redirect to login.html if not logged in
+    if (!sessionStorage.getItem('username')) {
+      window.location.href = 'login.html';
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const username = sessionStorage.getItem('username');
+      if (username) {
+        document.getElementById('usernameDisplay').textContent = username;
+      }
+    });
+  </script>
+  <div id="header">
+    <div id="userInfo">Logged in as: <span id="usernameDisplay"></span></div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <main>
+    <div class="row">
+      <div class="company-name">KIYANSH EARTHMOVERS</div>
+      <h2 style="margin: 0;">Daily Expense Tracker</h2>
+
+      <div class="box">
+        <div class="main-balance">
+          Remaining Purse: <span id="main-balance-display" aria-live="polite">0.00</span>
+        </div>
+      </div>
+
+
+      <!-- Form Section -->
+      <div class="box">
+        <div class="form-group">
+          <label for="entry-date">Date:</label>
+          <input type="date" id="entry-date" required>
+          <button type="button" onclick="setToday()" id="today-btn">📅 Today</button>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <select id="type" class="styled-select">
+            <option value="">-- None --</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+
+        <div id="category-section" class="form-group hidden">
+          <label for="category">Category:</label>
+          <select id="category" class="styled-select">
+            <option value="">-- None --</option>
+            <option value="Machine Expense">Machine Expense</option>
+            <option value="Home Expense">Home Expense</option>
+            <option value="Vehicle Expense">Vehicle Expense</option>
+            <option value="Salary">Salary</option>
+            <option value="Bulk Purchase">Bulk Purchase</option>
+            <option value="Money Send to India">Money Send to India</option>
+            <option value="General">General</option>
+          </select>
+        </div>
+
+        <div id="subcategory-section" class="form-group hidden">
+          <label for="subcategory">Sub Category:</label>
+          <select id="subcategory" class="styled-select">
+            <option value="">-- None --</option>
+            <optgroup label="SANY">
+              <option value="SANY 1">SANY 1</option>
+              <option value="SANY 2">SANY 2</option>
+              <option value="SANY 3">SANY 3</option>
+              <option value="SANY 4">SANY 4</option>
+              <option value="SANY 5">SANY 5</option>
+              <option value="SANY 6">SANY 6</option>
+              <option value="General">General</option>
+            </optgroup>
+            <optgroup label="XCMG">
+              <option value="XCMG 1">XCMG 1</option>
+              <option value="XCMG 2">XCMG 2</option>
+              <option value="XCMG 3">XCMG 3</option>
+              <option value="XCMG 4">XCMG 4</option>
+              <option value="XCMG 5">XCMG 5</option>
+              <option value="XCMG 6">XCMG 6</option>
+              <option value="XCMG 7">XCMG 7</option>
+              <option value="General">General</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" min="0.01" step="0.01" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" rows="3" placeholder="Enter details..." oninput="autoResize(this)"></textarea>
+        </div>
+
+        <div class="buttons">
+          <button id="submit-btn" onclick="submitEntry()" disabled>Submit</button>
+          <button type="button" onclick="resetForm()">Cancel</button>
+        </div>
+      </div>
+      <!-- History Table Section -->
+      <div class="history-table-box">
+        <table id="history-table-glass">
+          <thead>
+            <tr>
+              <th colspan="9" class="history-title">HISTORY</th>
+            </tr>
+            <tr>
+              <th colspan="9" class="history-filters">
+                <div>
+                  <label for="filter-type"><b>Filter by:</b></label>
+                  <select id="filter-type" class="styled-select filter-select" onchange="renderHistoryTable()">
+                    <option value="">-- None --</option>
+                    <option value="all">All</option>
+                    <option value="date">Date</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                  </select>
+                  <input type="date" id="filter-date" style="display:none;" onchange="renderHistoryTable()">
+                  <input type="month" id="filter-month" style="display:none;" onchange="renderHistoryTable()">
+                  <input type="number" id="filter-year" min="2000" max="2100" style="display:none;width:90px;"
+                    onchange="renderHistoryTable()">
+                  <label for="filter-entry-type" style="margin-left:12px;">Type:</label>
+                  <select id="filter-entry-type" class="styled-select filter-select" onchange="renderHistoryTable()">
+                    <option value="">-- None --</option>
+                    <option value="all">All</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                  </select>
+                </div>
+              </th>
+            </tr>
+            <tr>
+              <th>No.</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Subcategory</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="history-table" aria-live="polite">
+            <tr>
+              <td colspan="9">No Data Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <script>
+      let mainBalance = null;
+      let entries = [];
+      let currentlyEditingIndex = null;
+
+
+      function saveEntriesToLocalStorage() {
+        localStorage.setItem('kem_entries', JSON.stringify(entries));
+      }
+
+
+      function loadEntriesFromLocalStorage() {
+        const savedEntries = localStorage.getItem('kem_entries');
+        if (savedEntries) {
+          entries = JSON.parse(savedEntries);
+        } else {
+          entries = [];
+        }
+      }
+
+      function restrictFutureDates() {
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById('entry-date').setAttribute('max', today);
+        document.getElementById('filter-date').setAttribute('max', today);
+      }
+
+      const typeSelect = document.getElementById('type');
+      const categorySection = document.getElementById('category-section');
+      const categorySelect = document.getElementById('category');
+      const subcategorySection = document.getElementById('subcategory-section');
+      const subcategorySelect = document.getElementById('subcategory');
+      const amountInput = document.getElementById('amount');
+      const descriptionInput = document.getElementById('description');
+      const submitBtn = document.getElementById('submit-btn');
+      const entryDateInput = document.getElementById('entry-date');
+
+      // Show/hide category and subcategory
+      typeSelect.addEventListener('change', () => {
+        const type = typeSelect.value;
+        categorySection.classList.toggle('hidden', type !== 'expense');
+        subcategorySection.classList.add('hidden');
+        categorySelect.value = '';
+        subcategorySelect.value = '';
+        validateForm();
+      });
+
+      categorySelect.addEventListener('change', () => {
+        const showSub = categorySelect.value === 'Machine Expense';
+        subcategorySection.classList.toggle('hidden', !showSub);
+        subcategorySelect.value = '';
+        validateForm();
+      });
+
+      // Validate form to enable/disable submit button
+      function validateForm() {
+        const date = entryDateInput.value;
+        const type = typeSelect.value;
+        const category = categorySelect.value;
+        const subcategory = subcategorySelect.value;
+        const amount = parseFloat(amountInput.value);
+        const description = descriptionInput.value.trim();
+        const wordCount = description.split(/\s+/).filter(word => word.length > 0).length;
+
+        let valid = true;
+
+        if (!date) valid = false;
+        if (!type) valid = false;
+        if (isNaN(amount) || amount <= 0) valid = false;
+        if (description === '' || wordCount > 500) valid = false;
+        if (type === 'expense' && !category) valid = false;
+        if (type === 'expense' && category === 'Machine Expense' && !subcategory) valid = false;
+
+        submitBtn.disabled = !valid;
+      }
+
+      entryDateInput.addEventListener('input', validateForm);
+      typeSelect.addEventListener('input', validateForm);
+      categorySelect.addEventListener('input', validateForm);
+      subcategorySelect.addEventListener('input', validateForm);
+      amountInput.addEventListener('input', validateForm);
+      descriptionInput.addEventListener('input', validateForm);
+
+      flatpickr("#entry-date", {
+        dateFormat: "Y-m-d",
+        maxDate: "today",
+        onDayCreate: function (dObj, dStr, fp, dayElem) {
+          // 0 = Sunday
+          if (dayElem.dateObj.getDay() === 0) {
+            dayElem.classList.add("flatpickr-sunday");
+          }
+        }
+      });
+      flatpickr("#filter-date", {
+        dateFormat: "Y-m-d",
+        maxDate: "today",
+        allowInput: true,
+        onDayCreate: function (dObj, dStr, fp, dayElem) {
+          if (dayElem.dateObj.getDay() === 0) {
+            dayElem.classList.add("flatpickr-sunday");
+          }
+        }
+      });
+      // Set today's date in the date input
+      function setToday() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('entry-date').value = today;
+      }
+
+      document.getElementById('filter-type').addEventListener('change', function () {
+        document.getElementById('filter-date').style.display = 'none';
+        document.getElementById('filter-month').style.display = 'none';
+        document.getElementById('filter-year').style.display = 'none';
+        if (this.value === 'date') document.getElementById('filter-date').style.display = '';
+        if (this.value === 'month') document.getElementById('filter-month').style.display = '';
+        if (this.value === 'year') document.getElementById('filter-year').style.display = '';
+      });
+      function autoResize(textarea) {
+        textarea.style.height = 'auto';
+        textarea.style.height = (textarea.scrollHeight) + 'px';
+      }
+      function submitEntry() {
+        const date = entryDateInput.value;
+        const type = typeSelect.value;
+        const category = type === 'expense' ? categorySelect.value : '';
+        const subcategory = (type === 'expense' && category === 'Machine Expense') ? subcategorySelect.value : '';
+        const amount = parseFloat(amountInput.value);
+        const description = descriptionInput.value.trim();
+
+        if (!date || !type || isNaN(amount) || amount <= 0 || description === '' || (type === 'expense' && !category) || (category === 'Machine Expense' && !subcategory)) {
+          alert('All fields are required and amount must be greater than zero.');
+          return;
+        }
+
+        if (currentlyEditingIndex !== null) {
+          if (!confirm('Are you sure you want to save changes to this entry?')) return;
+
+          const original = entries[currentlyEditingIndex];
+          let newBalance = mainBalance;
+
+          // Undo the effect of the original entry
+          if (original.type === 'income') {
+            newBalance -= original.amount;
+          } else {
+            newBalance += original.amount;
+          }
+
+          // Apply the effect of the new entry
+          if (type === 'income') {
+            newBalance += amount;
+          } else {
+            newBalance -= amount;
+          }
+          // Check if the new balance is negative
+          // ADD THIS CHECK:
+          if (newBalance < 0) {
+            alert('Insufficient Balance');
+            return;
+          }
+
+          mainBalance = newBalance;
+          entries[currentlyEditingIndex] = { date, type, category, subcategory, amount, description };
+          currentlyEditingIndex = null;
+        }
+        else {
+          if (mainBalance === null && type === 'income') {
+            mainBalance = amount;
+          } else if (mainBalance !== null) {
+            let newBalance = type === 'income' ? mainBalance + amount : mainBalance - amount;
+            if (newBalance < 0) {
+              alert('Insufficient Balance');
+              return;
+            }
+            mainBalance = newBalance;
+          } else {
+            alert('Main balance must be set by first income entry.');
+            return;
+          }
+
+          entries.push({ date, type, category, subcategory, amount, description });
+        }
+
+        document.getElementById('main-balance-display').innerText = mainBalance.toFixed(2);
+        saveEntriesToLocalStorage(); // Save to Local Storage
+        renderHistoryTable();
+        updateMainBalance();
+        resetForm();
+      }
+
+      function updateMainBalance() {
+        let balance = 0;
+        entries.forEach(entry => {
+          const amount = parseFloat(entry.amount) || 0;
+          if (entry.type === 'income') balance += amount;
+          else if (entry.type === 'expense') balance -= amount;
+        });
+        mainBalance = balance;
+        document.getElementById('main-balance-display').innerText = mainBalance.toFixed(2);
+      }
+
+      function resetForm() {
+        entryDateInput.value = '';
+        typeSelect.value = '';
+        categorySelect.value = '';
+        subcategorySelect.value = '';
+        amountInput.value = '';
+        descriptionInput.value = '';
+        autoResize(descriptionInput);
+        categorySection.classList.add('hidden');
+        subcategorySection.classList.add('hidden');
+        currentlyEditingIndex = null;
+        validateForm();
+      }
+
+      function filterByDate() {
+        renderHistoryTable();
+      }
+
+      function renderHistoryTable() {
+        const tbody = document.getElementById('history-table');
+        tbody.innerHTML = '';
+
+        let filteredEntries = entries;
+        const filterType = document.getElementById('filter-type').value;
+        const filterEntryType = document.getElementById('filter-entry-type').value;
+
+        // If either filter is not selected, show no data
+        if (filteredEntries.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="9">No Data Available</td></tr>';
+          return;
+        }
+
+        // Filter by type (income/expense)
+        if (filterEntryType !== 'all') {
+          filteredEntries = filteredEntries.filter(e => e.type === filterEntryType);
+        }
+
+        // Filter by date/month/year
+        if (filterType === 'date') {
+          const date = document.getElementById('filter-date').value;
+          if (date) filteredEntries = filteredEntries.filter(e => e.date === date);
+        } else if (filterType === 'month') {
+          const month = document.getElementById('filter-month').value;
+          if (month) filteredEntries = filteredEntries.filter(e => e.date && e.date.startsWith(month));
+        } else if (filterType === 'year') {
+          const year = document.getElementById('filter-year').value;
+          if (year) filteredEntries = filteredEntries.filter(e => e.date && e.date.startsWith(year));
+        }
+
+        if (filteredEntries.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="9">No Data Available</td></tr>';
+          return;
+        }
+
+        let totalIncome = 0;
+        let totalExpense = 0;
+
+        filteredEntries.forEach((entry, index) => {
+          const realIndex = entries.indexOf(entry);
+          const isIncome = entry.type === 'income';
+          const row = document.createElement('tr');
+          row.style.background = index % 2 === 0 ? '#f9fafb' : '#eaf6fb';
+          row.style.transition = 'background 0.2s';
+
+          // Highlight income/expense
+          row.style.color = isIncome ? '#218838' : '#c82333';
+          if (isIncome) totalIncome += parseFloat(entry.amount) || 0;
+          else totalExpense += parseFloat(entry.amount) || 0;
+
+          // Tooltip for long description
+          const desc = entry.description.length > 30
+            ? `<span title="${entry.description}">${entry.description.slice(0, 30)}...</span>`
+            : entry.description;
+
+          row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${entry.date}</td>
+            <td style="font-weight:bold;">${isIncome ? '⬆️ Income' : '⬇️ Expense'}</td>
+            <td>${entry.category || '-'}</td>
+            <td>${entry.subcategory || '-'}</td>
+            <td style="font-weight:bold;">${parseFloat(entry.amount).toFixed(2)}</td>
+            <td>${desc}</td>
+            <td>
+              <button type="button" aria-label="Edit entry" onclick="editEntry(${realIndex})" style="font-size:1.2em;background:none;border:none;cursor:pointer;">✏️</button>
+            </td>
+            <td>
+              <button type="button" aria-label="Delete entry" onclick="deleteEntry(${realIndex})" style="font-size:1.2em;background:none;border:none;cursor:pointer;">🗑️</button>
+            </td>
+          `;
+          // Add hover effect
+          row.onmouseover = () => row.style.background = '#d1ecf1';
+          row.onmouseout = () => row.style.background = index % 2 === 0 ? '#f9fafb' : '#eaf6fb';
+          tbody.appendChild(row);
+        });
+
+        // Add summary row
+        const summaryRow = document.createElement('tr');
+        summaryRow.className = 'summary-row';
+        summaryRow.innerHTML = `
+          <td colspan="2" style="white-space:nowrap;">Total</td>
+          <td style="color:#218838; white-space:nowrap;">Income: ${totalIncome.toFixed(2)}</td>
+          <td colspan="2" style="color:#c82333; white-space:nowrap;">Expense: ${totalExpense.toFixed(2)}</td>
+          <td style="color:#1e7e34; white-space:nowrap;">Net: ${(totalIncome - totalExpense).toFixed(2)}</td>
+          <td colspan="3"></td>
+        `;
+        tbody.appendChild(summaryRow);
+      }
+
+      function editEntry(index) {
+        if (!confirm('Are you sure you want to edit this entry?')) return;
+
+        const entry = entries[index];
+        entryDateInput.value = entry.date;
+        typeSelect.value = entry.type;
+        if (entry.type === 'expense') {
+          categorySection.classList.remove('hidden');
+          categorySelect.value = entry.category;
+          if (entry.category === 'Machine Expense') {
+            subcategorySection.classList.remove('hidden');
+            subcategorySelect.value = entry.subcategory;
+          } else {
+            subcategorySection.classList.add('hidden');
+            subcategorySelect.value = '';
+          }
+        } else {
+          categorySection.classList.add('hidden');
+          categorySelect.value = '';
+          subcategorySection.classList.add('hidden');
+          subcategorySelect.value = '';
+        }
+        amountInput.value = entry.amount;
+        descriptionInput.value = entry.description;
+        autoResize(descriptionInput);
+        currentlyEditingIndex = index;
+        validateForm();
+      }
+
+      function deleteEntry(index) {
+        if (!confirm('Are you sure you want to delete this entry?')) return;
+
+        const entry = entries[index];
+        let newBalance = mainBalance;
+        if (entry.type === 'income') {
+          newBalance -= entry.amount;
+        } else {
+          newBalance += entry.amount;
+        }
+        if (newBalance < 0) {
+          alert('Cannot delete entry because it would result in negative balance.');
+          return;
+        }
+        mainBalance = newBalance;
+        entries.splice(index, 1);
+        document.getElementById('main-balance-display').innerText = mainBalance.toFixed(2);
+        saveEntriesToLocalStorage(); // Save to Local Storage
+        renderHistoryTable();
+        updateMainBalance();
+        resetForm();
+      }
+
+      // Initialization
+      loadEntriesFromLocalStorage(); // Load from Local Storage
+      restrictFutureDates();
+      validateForm();
+      renderHistoryTable();
+      updateMainBalance();
+    </script>
+  </main>
+</body>
+
+</html>
