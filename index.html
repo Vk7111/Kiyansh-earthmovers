@@ -65,7 +65,13 @@
       color: #1e7e34;
       letter-spacing: 1px;
     }
-
+    .currency-icon {
+      font-size: 1.5rem;      /* Match #main-balance-display font size */
+      font-weight: bold;
+      color: #1e7e34;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
     .row {
       max-width: 900px;
       margin: 32px auto;
@@ -389,7 +395,8 @@
 
       <div class="box">
         <div class="main-balance">
-          Available Balance: <span id="main-balance-display" aria-live="polite">0.00</span>₵
+          Available Balance: <span id="main-balance-display" aria-live="polite">0.00</span>
+          <span class="currency-icon">₵</span>
         </div>
       </div>
 
