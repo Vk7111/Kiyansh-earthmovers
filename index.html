@@ -201,105 +201,100 @@
       border-radius: 50% !important;
     }
 
-/* Table outer wrapper */
 table {
-  width: auto; /* allow table to grow */
-  margin-left: auto;
-  margin-right: auto;
-  table-layout: auto !important;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 28px;
-  background: rgba(255, 255, 255, 0.97);
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
-}
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      margin-left: auto;
+      margin-right: auto;
+      table-layout: auto !important;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 28px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+    }
 
-/* Main table styling */
-#history-table-glass {
-  width: fit-content; /* grow based on content */
-  margin: 0 auto;     /* center horizontally */
-  font-family: 'Segoe UI', 'Arial', sans-serif;
-  font-size: 1.04rem;
-  border: 2px solid #b0b8c9;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
-}
+    #history-table-glass {
+      width: 100%;
+      min-width: 900px;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 14px;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-size: 1.04rem;
+      box-shadow: 0 2px 12px rgba(44, 62, 80, 0.13);
+      /* Add a visible border for the whole table */
+      border: 2px solid #b0b8c9;
+      /* Ensures border follows the rounded corners */
+      overflow: hidden;
+    }
 
-/* Remove restrictive width from .history-title */
-#history-table-glass .history-title {
-  /* width: 100%; ❌ remove this */
-  /* min-width: 900px; ❌ remove this */
-  background: #232b43;
-  color: #fff;
-  font-size: 1.3em;
-  font-weight: bold;
-  letter-spacing: 2px;
-  border-radius: 14px 14px 0 0;
-}
+    #history-table-glass th,
+    #history-table-glass td {
+      text-align: center;
+      padding: 10px 6px;
+      border: 1px solid #b0b8c9;
+      /* Slightly darker border */
+      background: #fff;
+    }
 
-/* Header cells */
-#history-table-glass th {
-  background: #232b43;
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.08rem;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
+    #history-table-glass th {
+      background: #232b43;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.08rem;
+      letter-spacing: 1px;
+    }
 
-/* Table data cells */
-#history-table-glass td,
-#history-table-glass th {
-  text-align: center;
-  padding: 10px 6px;
-  border: 1px solid #b0b8c9;
-  background: #fff;
-  white-space: nowrap; /* Prevents wrapping for large numbers */
-}
+    #history-table-glass .history-title {
+      background: #232b43;
+      color: #fff;
+      font-size: 1.3em;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border-radius: 14px 14px 0 0;
+    }
 
-/* Hover effect */
-#history-table-glass tbody tr:hover td {
-  background: #e3e8ee;
-  color: #232b43;
-}
+    #history-table-glass .history-filters {
+      background: #232b43;
+      color: #fff;
+      padding: 0;
+    }
 
-/* Filters section */
-#history-table-glass .history-filters {
-  background: #232b43;
-  color: #fff;
-  padding: 0;
-}
+    #history-table-glass .history-filters div {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      height: 38px;
+      min-height: 38px;
+      padding: 0;
+    }
 
-#history-table-glass .history-filters div {
-  max-width: 700px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  height: 38px;
-  min-height: 38px;
-  padding: 0;
-}
+    #history-table-glass tbody tr:hover td {
+      background: #e3e8ee;
+      color: #232b43;
+    }
 
-/* Summary row */
-#history-table-glass .summary-row {
-  background: #232b43 !important;
-  font-weight: bold;
-  font-size: 1.08rem;
-  color: #fff;
-}
+    #history-table-glass .summary-row {
+      background: #232b43 !important;
+      font-weight: bold;
+      font-size: 1.08rem;
+      color: #fff;
+    }
 
-/* Optional: Responsive font size only */
-@media (max-width: 700px) {
-  #history-table-glass {
-    font-size: 0.85rem;
-    /* Removed min-width to allow shrinking */
-  }
-}
-
+    @media (max-width: 700px) {
+      #history-table-glass {
+        font-size: 0.85rem;
+        min-width: 700px;
+      }
+    }
 
     #main-balance-display {
       font-size: 1.5rem;
